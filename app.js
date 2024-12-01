@@ -1,5 +1,6 @@
-const div = document.querySelector(".card")
-
+const div = document.querySelector(".card");
+const h1 = document.querySelector(".count");
+h1.innerHTML = localStorage.getItem("itemCount") || 0;
 let cartItems = [];
 const Base_URL = fetch("https://dummyjson.com/products") // API hamain aik promise return karta hai
 
@@ -46,6 +47,10 @@ function addToCart(id){
     // console.log(id);
     if(cartItems.indexOf((id)) === -1){
         cartItems.push((id))
+        let itemCount = parseInt(localStorage.getItem("itemCount")) || 0;
+        itemCount++;
+        localStorage.setItem("itemCount" , itemCount)
+        h1.innerHTML = itemCount;
         Swal.fire({
             title: "Good job!",
             text: "Item added to cart successfully!",
@@ -58,7 +63,7 @@ function addToCart(id){
             confirmButtonColor: "#3085d6",
         })
     }
-      console.log(cartItems);
+    console.log(cartItems);
 }
     
 
@@ -69,6 +74,6 @@ function checkOut(){
     let convertArrIntoString = JSON.stringify(cartItems)
     localStorage.setItem("cart" , convertArrIntoString);
     window.location = "cart.html";
-    }
+}
 
 

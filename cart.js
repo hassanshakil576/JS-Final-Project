@@ -116,6 +116,7 @@ function deleteData(id){
                 <button id="minus" onclick="decrement(${id} , ${res.price})">-</button>
                 <h2 id = "item-price-${id}">Total Price: $${res.price * savedQuantity}</h2>
                 <button id = "delete-btn" onclick = "deleteData(${id})">Delete</button>
+                <button class = "buy-now-btn" onclick = "buyNow()">Buy now</button>
               </div>
             </div>
           `;
